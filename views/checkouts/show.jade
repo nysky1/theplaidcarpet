@@ -1,0 +1,86 @@
+extends ../layout
+
+block content
+  .wrapper: .response.container: .content
+    if result && result.message
+      .icon
+        img(src="/images/#{result.icon}.svg" alt="")
+
+      h1=result.header
+      section
+        p= result.message
+    else
+      section
+        p Test another transaction or see the Braintree API response.
+
+    if result.statusCode
+      section
+        a.button.primary.back(href="https://skyviewacademy.org/the-plaid-carpet-event/")
+          span Finished
+    else 
+      section
+        a.button.primary.back(href="/checkouts/new")
+          span Back 
+
+  aside.drawer.dark
+    header: .content.compact
+      a.braintree(href='https://developers.braintreepayments.com', target='_blank') SkyView Academy
+      h3 The Plaid Carpet Event
+
+    article.content.compact
+      section
+        h5 Transaction
+
+        table(cellpadding="0" cellspacing="0")
+          tbody
+            tr
+              th sponsor level
+              td= transaction.customFields.sponsorLevel
+            tr
+              th email
+              td= transaction.customer.email
+            tr
+              th company
+              td= transaction.customer.company
+            tr
+              th id
+              td= transaction.id
+            tr
+              th type
+              td= transaction.type
+            tr
+              th amount
+              td= transaction.amount
+            tr
+              th status
+              td= transaction.status
+            tr
+              th createdAt
+              td= transaction.createdAt
+            tr
+              th updatedAt
+              td= transaction.updatedAt
+
+      if (enviro = 'Sandbox')
+        section
+          h5 Payment
+
+          table(cellpadding="0" cellspacing="0")
+            tbody
+              tr
+                th last4
+                td= transaction.creditCard.last4
+              tr
+                th cardType
+                td= transaction.creditCard.cardType
+              tr
+                th expirationDate
+                td= transaction.creditCard.expirationDate
+              tr
+                th cardholderName
+                td= transaction.creditCard.cardholderName
+              tr
+                th customerLocation
+                td= transaction.creditCard.customerLocation
+      
+      

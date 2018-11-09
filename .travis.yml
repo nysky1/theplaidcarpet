@@ -1,0 +1,8 @@
+language: node_js
+node_js:
+  - 'stable'
+deploy: 
+  provider: azure_web_apps
+  site: "theplaidcarpet"        # If AZURE_WA_SITE isn't set 
+before_script:
+  - npm start &

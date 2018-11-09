@@ -1,0 +1,26 @@
+doctype html
+html
+  head
+    title The Plaid Carpet Event - Sponsorships
+    meta(name="viewport" content="width=device-width, initial-scale=1")
+    link(rel="stylesheet", href="/stylesheets/app.css")
+    link(rel="stylesheet", href="/stylesheets/overrides.css")
+  body
+    header.main
+      .container.wide
+        .content.slim
+          .set
+            .fill
+              a.pseudoshop(href='/') THE PLAID CARPET|#[strong EVENT]
+            .fit
+              a.braintree(href='https://developers.braintreepayments.com/guides/drop-in', target='_blank') SkyView Academy
+
+      .notice-wrapper
+        if messages && messages.length > 0
+          .show.notice.error.notice-error
+            for msg in messages
+              span.notice-message= msg.msg
+
+    block content
+
+    script(type="text/javascript", src="/javascript/demo.js")
