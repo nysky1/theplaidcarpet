@@ -9,8 +9,8 @@ exports.BT_PRIVATE_KEY= process.env.BT_PRIVATE_KEY || 'c64d9f535b04813aa4ac71577
 
 exports.sesConfig = function sesConfig(){
     return {
-        key: process.env.AWS_KEY, 
-        secret: process.env.AWS_SECRET
+        key: process.env.SES_KEY, 
+        secret: process.env.SES_SECRET
     }
 }
 exports.mailConfig = function mailConfig(transaction) {
